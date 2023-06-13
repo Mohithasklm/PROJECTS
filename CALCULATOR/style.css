@@ -1,0 +1,58 @@
+//Google Fonts - poppins
+@import url("https://fonts.googleapis.com/css2?family=poppins:wght@200;300;400;500;600;700&display=swap");
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  font-family:sans-serif;
+}
+body{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  background:black;
+}
+.calculator{
+  position:relative;
+  display:grid;
+ }
+ .calculator .value{
+ grid-column:span 4;
+ height:100px;
+ text-align:center;
+ border:none;
+ outline:none;
+ padding:10px;
+ font-size:18px;
+ }
+.calculator span
+{
+  display:grid;
+  width:70px;
+  height:60px;
+  background:#292929;
+  place-items:center;
+  border:1px solid rgb(0,0,0,0.1);
+  color:#fff;
+  }
+.calculator span:active{
+  background:rgb(255,163,26);
+  color:#fff;
+  }
+.calculator span.clear{
+background-color:green;
+}
+.bt{
+  border:none;
+  background-color:green;
+  }
+.bt:focus{
+ border:none;
+ outline:none;
+}
+ 
+ 
+ 
+ 
+ 
