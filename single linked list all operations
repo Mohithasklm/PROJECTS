@@ -1,1 +1,144 @@
+class Node:
+  def __init__(self,data):
+       self.data=data
+       self.next=None
+head=None
+tail=None
+def begin_insertion(data):
+   new_node=Node(data)
+   global head
+   global tail
+   if(head==None):
+     head=new_node
+     tail=new_node
+   else:
+     new_node.next=head
+     head=new_node
+def middle_insertion(data,k):
+     new_node=Node(data)
+     global head
+     global tail
+     if(head==None):
+        head=new_node
+        tail=new_node
+     elif(k==1):
+        new_node.next=head
+        head=new_node
+     else:
+        cnt=1
+        temp=head
+        while(temp!=None):
+            cnt+=1
+            if(cnt==k):
+               new_node.next=temp.next
+               temp.next=new_node
+               break
+            temp=temp.next 
+        if(k>cnt):
+           print("position is unbounded\n")       
+def end_insertion(data):
+   new_node=Node(data)
+   global head
+   global tail
+   if(head==None):
+     head=new_node
+     tail=new_node
+   else:
+     tail.next=new_node
+     tail=new_node
+def begin_deletion():
+   global head
+   global tail
+   if(head==None):
+      print("there is no node to delete.please insert some values\n")
+   else:
+      temp=head.next
+      head.next=None
+      head=temp   
+def middle_deletion(k): #k is the positon
+    global head
+    global tail   
+    if(head==None):
+       print("there is no node to delete.please insert some values\n")
+    else:
+       temp=head
+       if(k==1):
+         head=temp.next
+         temp.next=None
+       else:
+          cnt=1
+          while(temp!=None):
+             cnt+=1 
+             if(cnt==k):
+                temp.next=temp.next.next
+                temp.next.next=None
+             temp=temp.next
+          if(k>cnt):
+             print("position is unbounded\n") 
+def end_deletion():
+   global head
+   global tail
+   if(head==None):
+       print("there is no node to delete\n")
+   else:
+     temp=head
+     while(temp.next.next!=None):
+        temp=temp.next
+     temp.next=None
+     tail=temp
+def find_length():
+    temp=head
+    cnt=0
+    while(temp!=None):
+      cnt+=1
+      temp=temp.next
+    print("\nLength of the nodes are ",cnt)
+def print_nodes():
+   temp=head
+   while(temp!=None):
+      print(temp.data,end="->")
+      temp=temp.next
+   print()
+def selection(n):   
+    if(n==1):
+       typ=int(input("1.for begin insertion\n2.for middle insertion by position\n3.for end insertion\nchoose :"))
+       if(typ==1):
+          n=int(input("enter element to insert:"))
+          begin_insertion(n)
+       elif(typ==2):
+          n=int(input("enter element to insert:"))
+          k=int(input("enter position from 1 onwards to insert:"))
+          middle_insertion(n,k)
+       elif(typ==3):
+          n=int(input("enter element to insert:"))
+          end_insertion(n)
+       else:
+          print("entered wrong number")
+          exit()      
+    elif(n==2):
+       typ=int(input("1.for begin deletion\n2.for middle deletion by position\n3.for end deletion\nchoose :")) 
+       if(typ==1):
+          begin_deletion()
+       elif(typ==2):
+          k=int(input("enter position from 1 onwards to delete:"))
+          middle_deletion(k)
+       elif(typ==3):
+          end_deletion()
+       else:
+          print("entered wrong number")
+          exit() 
+    elif(n==3):
+       find_length()
+    elif(n==4):
+       print_nodes()
+    elif(n==5):
+       exit()   
+    else:
+       print("entered wrong number")
+       exit()
+while(1):
+  n=int(input("1.for insertion\n2.for deletion\n3.find length\n4.for printing\n5.for exit\nchoose :")) 
+  selection(n) #for selecting insertion or deletion or exit
+
+    
 
